@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "GT America Mono Bold";
+    src: url("https://db.onlinewebfonts.com/t/539a50bc747b98d2938eb0c713071ab3.eot");
+    src: url("https://db.onlinewebfonts.com/t/539a50bc747b98d2938eb0c713071ab3.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/539a50bc747b98d2938eb0c713071ab3.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/539a50bc747b98d2938eb0c713071ab3.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/539a50bc747b98d2938eb0c713071ab3.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/539a50bc747b98d2938eb0c713071ab3.svg#GT America Mono Bold")format("svg");
+}
+
+body {
+    font-family: "GT America Mono Bold", sans-serif;
+}

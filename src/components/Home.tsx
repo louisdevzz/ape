@@ -90,7 +90,7 @@ const Home: React.FC = () => {
     return (
         <div className="flex flex-col">
             <div className='p-3'>
-                <div className="px-4 py-3 bg-gray-600 bg-opacity-50 rounded-full shadow-[0_4px_30px_0_rgba(255,255,255,0.5)] flex flex-row gap-5 items-center max-w-[200px]">
+                <div className="px-4 py-3 bg-gray-600 bg-opacity-50 rounded-full shadow-[0_4px_30px_0_rgba(255,255,255,0.5)] flex flex-row justify-between items-center max-w-[220px]">
                     <p className='text-xs text-gray-400'>Profit per hour: </p>
                     <div className='flex flex-row gap-1 items-center'>
                         <span className='text-xs font-bold text-white'>0.00</span>
