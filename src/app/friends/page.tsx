@@ -1,12 +1,30 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { Page } from '@/components/Page';
 import Image from 'next/image';
 import { useSignal, initData } from '@telegram-apps/sdk-react';
+import { useState, useEffect, useCallback } from 'react';
+import { useMongodb } from '@/hooks/useMongodb';
+import { InviteModal } from '@/components/invite-modal';
 
 export default function PageFriends() {
     const initDataState = useSignal(initData.state);
+    const [copyMessage, setCopyMessage] = useState('');
+    const [isInviteModalOpen, setIsInviteModalOpen] = useState(false);
+    const { getUser } = useMongodb();
+
+    const [codeInviter, setCodeInviter] = useState<string | null>(null);
+
+    const fetchCodeInviter = useCallback(async () => {
+        if (initDataState?.user?.username) {
+            const inviter = await getUser(initDataState.user.username);
+            setCodeInviter(inviter?.codeInviter);
+        }
+    }, [initDataState?.user?.username]);
+
+    useEffect(() => {
+        fetchCodeInviter();
+    }, [fetchCodeInviter]);
 
     const mockFriendsList = [
         { id: 1, name: 'John Doe', level: 'Level 1', points: 10000, photoUrl: '/assets/ape2.jpg' },
@@ -16,6 +34,15 @@ export default function PageFriends() {
         { id: 3, name: 'Alice Johnson', level: 'Level 1', points: 12000, photoUrl: '/assets/ape2.jpg' },
         { id: 3, name: 'Alice Johnson', level: 'Level 1', points: 12000, photoUrl: '/assets/ape2.jpg' },
     ];
+
+    const handleCopy = async () => {
+        const link = `https://t.me/apekingkong?startapp=${codeInviter}`;
+        await navigator.clipboard.writeText(link);
+        setCopyMessage('Copied!');
+        setTimeout(() => setCopyMessage(''), 2000);
+    };
+
+    //console.log(codeInviter);
 
     return (
         <Page>
@@ -50,14 +77,8 @@ export default function PageFriends() {
                 <span className='text-white text-xl font-semibold'>Friends List</span>
                 <div className='w-full h-20 -mt-2 relative'>
                         <div style={{backgroundImage:"url('/assets/frame-task.png')", backgroundSize:"contain", backgroundPosition:"center", backgroundRepeat:"no-repeat"}} className='w-full h-full'/>
-                        <div className='absolute top-0 left-0 w-full h-full flex items-center justify-between p-4 gap-2'>
-                            {/* <img src="/assets/icon/png/telegram-premium.png" alt="Telegram" width={40} height={40} /> */}
-                            <div className='flex flex-col'>
-                                <span className='text-white text-sm font-semibold'>https://example.com/invite</span>
-                            </div>
-                            <button className='bg-white hover:bg-blue-700 text-blue-700 font-bold py-2 px-4 rounded transition-all duration-75'>
-                                <img src="/assets/icon/svg/copy.svg" alt="Copy" width={20} height={20} />
-                            </button>
+                        <div className='absolute top-0 left-0 w-full h-full flex items-center justify-center p-4 gap-2'>
+                            <button onClick={() => setIsInviteModalOpen(true)} className='text-white px-4 py-2 rounded-md'>{"Copy Invite Link"}</button>
                         </div>
                     </div>
                 <div className='flex flex-col gap-7 w-full mt-2 max-h-[200px] overflow-y-auto'>
@@ -75,6 +96,7 @@ export default function PageFriends() {
                     ))}
                 </div>
             </div>
+            <InviteModal isOpen={isInviteModalOpen} inviteLink={`https://t.me/APEKingKongBot/bot?startapp=${codeInviter}`} onClose={() => setIsInviteModalOpen(false)} />
         </Page>
     );
 }

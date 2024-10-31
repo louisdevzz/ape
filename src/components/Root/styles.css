@@ -121,7 +121,7 @@ strong {
   font-size: 14px;
   letter-spacing: 5px;
   color: #ffffff;
-  text-shadow: 0 0 4px white;
+  /* text-shadow: 0 0 1px white; */
 }
 
 #glow {

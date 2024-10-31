@@ -4,21 +4,21 @@ import { useTranslations } from 'next-intl';
 import { Page } from '@/components/Page';
 import Image from 'next/image';
 import { useSignal, initData } from '@telegram-apps/sdk-react';
+import Link from 'next/link';
 
 export default function PageTasks() {
     const initDataState = useSignal(initData.state);
 
     const mockTasks = [
-        { id: 1, name: 'Task 1', points: 100 },
-        { id: 2, name: 'Task 2', points: 200 },
-        { id: 3, name: 'Task 3', points: 300 },
-        { id: 4, name: 'Task 4', points: 400 },
-        { id: 5, name: 'Task 5', points: 500 },
-        { id: 6, name: 'Task 6', points: 600 },
-        { id: 7, name: 'Task 7', points: 700 },
-        { id: 8, name: 'Task 8', points: 800 },
-        { id: 9, name: 'Task 9', points: 900 },
-        { id: 10, name: 'Task 10', points: 1000 },
+        { id: 1, name: 'Invite 20 friends', points: '1.000' },
+        { id: 2, name: 'Invite 50 friends', points: '2.000' },
+        { id: 3, name: 'Invite 100 friends', points: '10.000' },
+        { id: 4, name: 'Invite 200 friends', points: '50.000' },
+        { id: 5, name: 'Invite 500 friends', points: '100.000' },
+        { id: 6, name: 'Invite 1000 friends', points: '200.000' },
+        { id: 7, name: 'Invite 2000 friends', points: '500.000' },
+        { id: 8, name: 'Invite 5000 friends', points: '800.000' },
+        { id: 9, name: 'Invite 10000 friends', points: '1.000.000' },
     ];
 
     return (
@@ -40,9 +40,9 @@ export default function PageTasks() {
                                         <span className='text-gray-400 text-xs'>{task.points} points</span>
                                     </div>
                                 </div>
-                                <button className='bg-white px-6 pb-1 rounded-md text-blue-700 hover:bg-blue-700 hover:text-white transition-all duration-75'>
+                                <Link href={"/friends"} className='bg-white px-6 pb-1 rounded-md text-blue-700 hover:bg-blue-700 hover:text-white transition-all duration-75'>
                                     <span className='text-xs font-semibold'>Start</span>
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     ))}

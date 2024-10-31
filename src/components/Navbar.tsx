@@ -9,31 +9,31 @@ const Navbar = () => {
                 <li>
                     <Link href="/" style={{color:"white"}} className="flex flex-col items-center gap-1">
                         <Image src="/assets/icon/svg/home.svg" alt="Home" width={22} height={22} />
-                        <span className="text-xs font-semibold">Home</span>
+                        <span className="text-xs">Home</span>
                     </Link>
                 </li>
                 <li>
                     <Link href="/tasks" style={{color:"white"}} className="flex flex-col items-center gap-1">
                         <Image src="/assets/icon/svg/task.svg" alt="Tasks" width={24} height={24} />
-                        <span className="text-xs font-semibold">Tasks</span>
+                        <span className="text-xs">Tasks</span>
                     </Link>
                 </li>
                 <li>
                     <Link href="/friends" style={{color:"white"}}   className="flex flex-col items-center gap-1">
                         <Image src="/assets/icon/svg/friend.svg" alt="Friends" width={24} height={24} />
-                        <span className="text-xs font-semibold">Friends</span>
+                        <span className="text-xs">Friends</span>
                     </Link>
                 </li>
                 <li>
                     <Link href="/leaderboard" style={{color:"white"}} className="flex flex-col items-center gap-1">
                         <Image src="/assets/icon/svg/leaderboard.svg" alt="Leaderboard" width={24} height={24} />
-                        <span className="text-xs font-semibold">Leaderboard</span>
+                        <span className="text-xs">Leaderboard</span>
                     </Link>
                 </li>
                 <li>
                     <Link href="/wallet" style={{color:"white"}} className="flex flex-col items-center gap-1">
                         <Image src="/assets/icon/svg/wallet.svg" alt="Wallet" width={24} height={24} />
-                        <span className="text-xs font-semibold">Wallet</span>
+                        <span className="text-xs">Wallet</span>
                     </Link>
                 </li>
             </ul>
