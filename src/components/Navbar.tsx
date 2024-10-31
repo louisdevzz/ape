@@ -30,6 +30,12 @@ const Navbar = () => {
                         <span className="text-xs font-semibold">Leaderboard</span>
                     </Link>
                 </li>
+                <li>
+                    <Link href="/wallet" style={{color:"white"}} className="flex flex-col items-center gap-1">
+                        <Image src="/assets/icon/svg/wallet.svg" alt="Wallet" width={24} height={24} />
+                        <span className="text-xs font-semibold">Wallet</span>
+                    </Link>
+                </li>
             </ul>
         </nav>
     );

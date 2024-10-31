@@ -44,15 +44,15 @@ function RootInner({ children }: PropsWithChildren) {
   }, [initDataUser]);
 
   // Check if the app is running in a supported environment
-  const isSupported = ['android', 'ios'].includes(lp.platform);
+  // const isSupported = ['android', 'ios', 'web'].includes(lp.platform);
 
-  if (!isSupported) {
-    return (
-      <div className="unsupported-message">
-        This app is only available in the Telegram mobile app.
-      </div>
-    );
-  }
+  // if (!isSupported) {
+  //   return (
+  //     <div className="unsupported-message">
+  //       This app is only available in the Telegram mobile app.
+  //     </div>
+  //   );
+  // }
 
   return (
     <AppRoot
@@ -74,5 +74,5 @@ export function Root(props: PropsWithChildren) {
     <ErrorBoundary fallback={ErrorPage}>
       <RootInner {...props}/>
     </ErrorBoundary>
-  ) : <div className="root__loading">Loading</div>;
+  ) : <img src="/assets/bg-loading.jpg" alt="Loading" width={100} height={100} className='w-[100vw] h-[100%]' />;
 }
